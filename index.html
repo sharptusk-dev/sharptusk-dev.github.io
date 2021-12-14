@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+        }
+
+        main {
+            margin: 0 auto;
+            max-width: 960px;
+        }
+    </style>
+
+<script>
+    function initiateBankApp(){
+            let accountBalance = 1000;
+            let loggedOn = true;
+            let myPatience = 3;
+
+            while(loggedOn){
+
+                let input = prompt("What do you want to do?\n\n" +
+                "Your account is at $" + accountBalance + ".\n\n" +
+                "Q - exit app.\n" +
+                "W - withdraw $100.\n" +
+                "D - deposit $100.\n" +
+                "B - view balance.");
+
+                switch (input.toLowerCase()) {
+                    case "q":
+                        alert("Thanks for using our service");
+                        loggedOn = false;
+                        break;
+                    case "w":
+                        accountBalance -= 100;
+                        alert("$100 has been withdrawn.\n\nYour account stands at " + 
+                        accountBalance + ".");
+                        break;    
+                    case "d":
+                        accountBalance += 100;
+                        alert("$100 has been deposited.\n\nYour account stands at " + 
+                        accountBalance + ".");
+                        break;
+                    case "b":
+                        alert("Account balance stands at " + accountBalance +".");
+                        break;
+
+                    default:
+                        if (myPatience != 0){
+                            myPatience--;
+                            
+                            alert("Not a valid input.\n\n" + 
+                            "You have another " + myPatience + " tries to get it right.\n\n" +
+                            "Otherwise I'm kicking you out.");
+                        } else {
+                            alert("My patience has run out. Goodbye.")
+                            loggedOn = false;
+                        }
+                        break;
+                }
+            }
+            return false;
+        }
+    </script>
+
+    <title>Lesson 5 Assignment</title>
+</head>
+<body>
+    <main>
+        <h1>Lesson 5, Assignment</h1>
+
+        <legend>Starting balance is $1,000</legend>
+        <button onclick="initiateBankApp()">Check Bank Account</button>
+
+    </main>
+</body>
+</html>
